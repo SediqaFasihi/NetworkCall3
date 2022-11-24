@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NetworkCall3</string>
+    <string name="tv_price">%s</string>
+</resources>
