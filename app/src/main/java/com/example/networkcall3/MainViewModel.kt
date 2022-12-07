@@ -11,9 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://www.boredapi.com/api/")
+        .baseUrl("https://www.boredapi.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -21,18 +21,17 @@ class MainViewModel: ViewModel() {
 
     private val repos = MutableLiveData<RepoData>()
     val repoList: LiveData<RepoData>
-    get() = repos
+        get() = repos
 
     private var error = MutableLiveData<String>()
     val errorList: LiveData<String>
-    get() = error
+        get() = error
 
-    fun retrieveRepos(){
+    fun retrieveRepos() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 repos.value = apiService.listRepos().body()
-            }catch (e:Exception)
-            {
+            } catch (e: Exception) {
                 error.value = e.localizedMessage
             }
         }

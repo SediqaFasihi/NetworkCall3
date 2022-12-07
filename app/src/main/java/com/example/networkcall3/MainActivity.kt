@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.retrieveRepos()
         val view = binding.root
-        setContentView(R.layout.activity_main)
+        setContentView(view)
 
     }
     private fun observeRepose(){
